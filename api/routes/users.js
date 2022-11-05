@@ -17,15 +17,15 @@ router.put("/:id", verify, async (req,res)=>{
             const updateUser = await User.findByIdAndUpdate(req.params.id,
                 {
                 $set:req.body,
-                }, 
+                },
                 { new: true }
             );
             res.status(200).json(updatedUser);
-        }catch(err){
+        } catch(err) {
             res.status(500).json(err)
         }
-    }else{
-        res.status(403).json("You can update only your account!")
+    } else {
+        res.status(403).json("You can update only your account!");
     }
 });
 //DELETE
