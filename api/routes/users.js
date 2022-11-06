@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const user = require("../models/User");
-const CryptoJS = require("crypto-js");
 const User = require("../models/User");
+const CryptoJS = require("crypto-js");
+//const User = require("../models/User");
 const verify = require('../verifyToken');
 //UPDATE
 router.put("/:id", verify, async (req,res) => {
@@ -16,7 +16,7 @@ router.put("/:id", verify, async (req,res) => {
         try{
             const updateUser = await User.findByIdAndUpdate(req.params.id,
                 {
-                $set:req.body,
+                 $set: req.body,
                 },
                 { new: true }
             );
@@ -58,7 +58,7 @@ router.get("/", verify, async (req,res)=>{
     const query = req.query.new;
     if(req.user.isAdmin){
         try{
-            const users = query ? await User.find().limit(10) : await user.find();
+            const users = query ? await User.find().limit(10) : await User.find();
             res.status(200).json(users);
         } catch(err) {
             res.status(500).json(err);
