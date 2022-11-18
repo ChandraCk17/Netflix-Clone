@@ -5,10 +5,10 @@ import Watch from "./pages/watch/Watch";
 import Login from "./pages/login/Login";
 
 const App = () => {
-  //return <Home />;
+  return <Home />;
   //return <Register />;
   //return <Login />;
-  return <Watch />;
+  //return <Watch />;
   
   
 };
