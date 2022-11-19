@@ -98,4 +98,5 @@ router.get("/", verify, async (req, res) => {
         res.status(403).json("You are not allowed!");
     }
 });
+
 module.exports = router;
