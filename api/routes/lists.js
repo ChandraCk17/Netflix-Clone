@@ -22,5 +22,7 @@ router.post("/", verify, async (req, res) => {
 
 //DELETE
 
+//GET
+
 
 module.exports = router;
