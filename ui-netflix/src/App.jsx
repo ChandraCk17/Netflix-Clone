@@ -3,41 +3,40 @@ import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
 import Login from "./pages/login/Login";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
+import { 
+  BrowserRouter as Router, 
+  Routes, 
+  Route, 
+  Navigate, 
 } from "react-router-dom";
-import { useContext } from "react";
+//import { useContext } from "react";
 //import { AuthContext } from "./authContext/AuthContext";
 
 const App = () => {
-  const { user } = useContext(AuthContext);
+  //const { user } = useContext(AuthContext);
+  const user = true;
   return ( 
   <Router>  
-  <Switch>
-    <Route exact path="/">
-      {user ? <Home /> : <Redirect to="register" />}
-      </Route>
-      <Route path="/register">
-        {!user ? <Register /> : <Redirect to="/" />}
-        </Route>
-        <Route path="/login">{!user ? <Login /> : <Redirect to="/" />} </Route>
+  <Routes>
+    <Route path="/" element={user ? <Home /> : <Navigate to="/register" />} />
+      <Route path="/register"
+        element={!user ? <Register /> : <Navigate to="/" />} />
+        <Route path="/login" 
+        element={!user ? <Login /> : <Navigate to="/" />} />
         {user && (
           <>
-          <Route path="/movies">
-            <Home type = "movie" />
-            </Route>
-            <Route path ="/series">
-              <Home type="series" />
-              </Route>
-              <Route path="/watch">
-                <Watch />
-              </Route>
+          <Route path="/movies"
+            element=<Home type = "movie" />
+            />
+            <Route path ="/series"
+              element=<Home type="series" />
+              />
+              <Route path="/watch"
+                element=<Watch />
+              />
             </>
         )}
-   </Switch>
+   </Routes>
   </Router>
   );
 };

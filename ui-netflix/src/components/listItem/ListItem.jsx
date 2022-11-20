@@ -5,24 +5,42 @@ import {
   ThumbUpAltOutlined, 
   ThumbDownOutlined,
 } from "@material-ui/icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-export default function ListItem({index}) {
+export default function ListItem({index, item}) {
     const [isHovered, setIsHovered] = useState(false);
-    const trailer ="https://encrypted-vtbn0.gstatic.com/video?q=tbn:ANd9GcTD6wrcIE-F57C9FTIxPNEuODxuwPGB-vAfUQ";
+    const [movie, setMovie] = useState({});
+    useEffect(() => {
+      const getMovie = async () => {
+        try {
+          const res = await axios.get("/movies/find/" + item, {
+            headers: {
+              token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODk2NjczNywiZXhwIjoxNjY5Mzk4NzM3fQ.Qo-6yhW83kJGmv9b-vjuC_qZyTuOusXXAeZ1iZl8O3w",//+JSON.parse(localStorage.getItem("user")).accessToken,
+            },
+          });
+          setMovie(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getMovie();
+    }, [item]);
+
   return (
+    <Link to={{ pathname: "/watch", movie: movie }}>
     <div 
      className="listItem" 
      style={{ left: isHovered && index * 225 - 50 + index * 2.5}}
      onMouseEnter={() => setIsHovered(true)} 
      onMouseLeave={() => setIsHovered(false)}
     >
-        <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/09/Avatar-The-Way-of-Water-Poster.jpg"
-        alt=""
-        />
+        <img src={movie?.imgSm} alt="" />
         {isHovered && (
         <>
-        <video src= {trailer} autoPlay ={true} loop />
+        <video src= {item.trailer} autoPlay ={true} loop />
         <div className="itemInfo">
           <div className="icons">
             <PlayArrow className="icon" />
@@ -31,19 +49,17 @@ export default function ListItem({index}) {
             <ThumbDownOutlined className="icon" />
           </div>
           <div className="itemInfoTop">
-            <span>1 hour 14 mins</span>
-            <span className="limit">+16</span>
-            <span>1999</span>
+            <span>{movie.duration}</span>
+            <span className="limit">+{movie.limit}</span>
+            <span>{item.year}</span>
           </div>
-          <div className="desc">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quidem 
-            accusamus id! Numquam, quae!
-          </div>
-          <div className="genre">Action</div>
+          <div className="desc">{movie.limit}</div>
+          <div className="genre">{movie.genre}</div>
         </div>
       </>
       )}
     </div>
+    </Link>
   );
 }
 

@@ -1,7 +1,10 @@
-import { ArrowBackOutlined } from '@material-ui/icons'
-import React from 'react'
+import { ArrowBackOutlined } from '@material-ui/icons';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
-export default function watch() {
+export default function Watch() {
+  const location = useLocation();
+  console.log(location);
     return (
       <div className="watch">
         <div className="back">

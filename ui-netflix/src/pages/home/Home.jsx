@@ -13,13 +13,13 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
     try {
         const res = await axios.get(
-          `lists${type ? "?type" + type : ""}${
+          `lists${type ? "?type=" + type : ""}${
             genre ? "&genre=" + genre : ""
           }`,
           {
             headers: {
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODg3OTEyNSwiZXhwIjoxNjY5MzExMTI1fQ.oXA4GMD7n4dlAuXAraUVHLN3AL-zixQcEtnJ9KFBFu8"+JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODk2NjczNywiZXhwIjoxNjY5Mzk4NzM3fQ.Qo-6yhW83kJGmv9b-vjuC_qZyTuOusXXAeZ1iZl8O3w",//+JSON.parse(localStorage.getItem("user")).accessToken,
           },
         }
       );
