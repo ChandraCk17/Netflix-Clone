@@ -1,13 +1,39 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import "./featured.scss";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function Featured({type}) {
+export default function Featured({type, setGenre }) {
+    const [content, setContent] = useState({});
+
+    useEffect(() => {
+        const getRandomContent = async () => {
+            try {
+                const res = await axios.get(`/movies/random?type=${type}`, {
+                    headers: {
+                        token:
+                          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODk2NjczNywiZXhwIjoxNjY5Mzk4NzM3fQ.Qo-6yhW83kJGmv9b-vjuC_qZyTuOusXXAeZ1iZl8O3w", //+JSON.parse(localStorage.getItem("user")).accessToken,
+                    },
+                });
+                setContent(res.data[0]);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getRandomContent();
+    }, [type]);
+
+    console.log(content);
   return (
     <div className="featured">
         {type && (
             <div className="category">
                 <span>{type === "movies" ? "Movies" : "Series"}</span>
-                <select name="genre" id="genre">
+                <select 
+                    name="genre" 
+                    id="genre"
+                    onChange={(e) => setGenre(e.target.valule)}
+                    >
                     <option>Genre</option>
                     <option value="adventure">Adventure</option>
                     <option value="comedy">Comedy</option>
@@ -25,20 +51,11 @@ export default function Featured({type}) {
                 </div>
         )}
         <img 
-         src="https://www.pixel4k.com/wp-content/uploads/2021/08/kristen-stewart-roberi-and-fraud-doris-sunglasses-4k_1629775931-2048x1152.jpg.webp"
-         alt=""
-        />
+         src={content.img} alt="" />
         <div className="info">
             <img
-                src="https://blog.logomyway.com/wp-content/uploads/2021/09/avengers-logo-transparent.png"
-                alt=""
-            />
-            <span className="desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Sint, tempore! Nam pariatur, ea ex vitae corrupti quia animi
-                autem nisi modi dolorum molestiae temporibus tenetur labore 
-                sint numquam beatae? Voluptates.
-            </span>
+                src={content.imgTitle} alt="" />
+            <span className="desc"> {content.desc}</span>
             <div className="buttons">
                 <button className="play">
                     <PlayArrow />
