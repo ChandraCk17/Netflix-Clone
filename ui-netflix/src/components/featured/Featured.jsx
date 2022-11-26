@@ -32,7 +32,7 @@ export default function Featured({type, setGenre }) {
                 <select 
                     name="genre" 
                     id="genre"
-                    onChange={(e) => setGenre(e.target.valule)}
+                    onChange={(e) => setGenre(e.target.value)}
                     >
                     <option>Genre</option>
                     <option value="adventure">Adventure</option>

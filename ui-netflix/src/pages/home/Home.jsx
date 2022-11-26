@@ -19,7 +19,7 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODk2NjczNywiZXhwIjoxNjY5Mzk4NzM3fQ.Qo-6yhW83kJGmv9b-vjuC_qZyTuOusXXAeZ1iZl8O3w",//+JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTQ0MTA3NywiZXhwIjoxNjY5ODczMDc3fQ.n_EnaPIavVZ-PbPPfSOXT6Yrkbwt_od3tz-usieO_xs",//+JSON.parse(localStorage.getItem("user")).accessToken,
           },
         }
       );

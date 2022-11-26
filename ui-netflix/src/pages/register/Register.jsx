@@ -7,8 +7,8 @@ export default function Register() {
     const [password,setPassword] = useState("");
 
 
-    const emailRef = useRef()
-    const passwordRef = useRef()
+    const emailRef = useRef();
+    const passwordRef = useRef();
 
     const handleStart = ()=>{
         setEmail(emailRef.current.value);
