@@ -18,6 +18,24 @@ const MovieReducer = (state,action) => {
                 isFetching: false,
                 error: true,
             };
+            case "DELETE_MOVIES_START":
+                return {
+                    ...state,
+                    isFetching: true,
+                    error: false,
+                };
+                case "DELETE_MOVIES_SUCCESS":
+                return {
+                    movies: state.movies.filter((movie) => movie._id !== action.payload),
+                    isFetching: false,
+                    error: false,
+                };
+                case "DELETE_MOVIES_FAILURE":
+                return {
+                    ...state,
+                    isFetching: false,
+                    error: true,
+                };
             default:
                 return { ...state };
     }
