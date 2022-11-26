@@ -14,7 +14,9 @@ import Login from "./pages/login/Login";
 function App() {
   return (
     <Router>
-      <Route path="/login" element={<Login />} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
     <Topbar />
     <div className="container">
       <Sidebar />
