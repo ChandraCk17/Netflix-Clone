@@ -27,11 +27,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} />
-        {user && (
-          <>
+      </Routes>
     <Topbar />
     <div className="container">
       <Sidebar />
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/user/:userId" element={<User />} />
@@ -39,10 +39,8 @@ function App() {
         <Route path="/movies" element={<ProductList />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/newProduct" element={<NewProduct />} />
-        </div>
-        </>
-        )}
       </Routes>
+    </div>
   </Router>
   );
 }
