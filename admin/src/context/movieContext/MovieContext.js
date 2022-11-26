@@ -1,5 +1,5 @@
-import MovieReducer from "./AuthReducer";
-import { createContext, useEffect, useReducer } from "react";
+import MovieReducer from "./MovieReducer";
+import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
     movie:[],
@@ -18,7 +18,7 @@ export const MovieContextProvider = ({children}) => {
             movies: state.movies,
             isFetching: state.isFetching,
             error: state.error,
-            dispatch
+            dispatch,
         }}
         >
             {children}

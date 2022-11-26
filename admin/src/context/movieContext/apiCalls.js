@@ -1,5 +1,5 @@
 import axios from "axios";
-import { deleteMovieFailure, deleteMovieStart, deleteMovieSuccess, getMoviesFailure, getMoviesStart } from "./MovieAction";
+import { deleteMovieFailure, deleteMovieStart, deleteMovieSuccess, getMoviesFailure, getMoviesStart, getMoviesSuccess } from "./MovieAction";
 
 export const getMovies = async ( user, dispatch) => {
     dispatch(getMoviesStart());
