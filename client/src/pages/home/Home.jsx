@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar/Navbar";
-import "./home.scss";
 import Featured from "../../components/featured/Featured";
+import "./home.scss";
 import List from "../../components/list/List";
 import { useEffect, useState  } from "react";
 import axios from "axios";
@@ -19,7 +19,7 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTQ0MTA3NywiZXhwIjoxNjY5ODczMDc3fQ.n_EnaPIavVZ-PbPPfSOXT6Yrkbwt_od3tz-usieO_xs",//+JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
           },
         }
       );
