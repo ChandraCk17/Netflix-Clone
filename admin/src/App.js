@@ -15,7 +15,7 @@ import Login from "./pages/login/Login";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { useContext } from "react";
 import MovieList from "./pages/movieList/MovieList";
-import NewProduct from "./pages/newProduct/NewProduct";
+import NewProduct from "./pages/newMovie/NewMovie";
 import { Movie } from "@material-ui/icons";
 
 

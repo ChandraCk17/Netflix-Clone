@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import "./newMovie.css";
 import storage from "../../firebase";
-import { createMovie } from "../..contest/movieContext/apiCalls";
+import { createMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function NewMovie() {
   const [movie, setMovie] = useState(null);
   const [img, setImg] = useState(null);
-  const [imgTitle, setTitle] = useState(null);
+  const [imgTitle, setImgTitle] = useState(null);
   const [imgSm, setImgSm] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
@@ -70,7 +70,7 @@ export default function NewMovie() {
           <label>Image</label>
           <input 
           type="file" 
-          id="file" 
+          id="img" 
           name="img"
           onChange={(e) => setImg(e.target.files[0])}
           />
@@ -82,6 +82,15 @@ export default function NewMovie() {
           id="imgTitle"
           name="imgTitle"
           onChange={(e) => setImgTitle(e.target.files[0])}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Thumbnail image</label>
+          <input 
+          type="file" 
+          id="imgSm"
+          name="imgSm"
+          onChange={(e) => setImgSm(e.target.files[0])}
           />
         </div>
         <div className="addProductItem">
@@ -162,7 +171,7 @@ export default function NewMovie() {
           />
         </div>
         {uploaded === 5 ? (
-          <button className="addProductButton">
+          <button className="addProductButton" onClick={handleSubmit}>
             Create
           </button>
         ) : (
