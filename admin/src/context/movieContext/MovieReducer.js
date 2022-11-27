@@ -1,5 +1,5 @@
-const MovieReducer = (state,action) => {
-    switch (OfflineAudioCompletionEvent.type) {
+const MovieReducer = (state, action) => {
+    switch (action.type) {
         case "GET_MOVIES_START":
             return {
                 movies: [],
@@ -18,7 +18,7 @@ const MovieReducer = (state,action) => {
                 isFetching: false,
                 error: true,
             };
-            case "CREATE_MOVIES_START":
+            case "CREATE_MOVIE_START":
                 return {
                     ...state,
                     isFetching: true,
@@ -36,19 +36,39 @@ const MovieReducer = (state,action) => {
                     isFetching: false,
                     error: true,
                 };
-            case "DELETE_MOVIES_START":
+             case "UPLOAD_MOVIE_START":
                 return {
                     ...state,
                     isFetching: true,
                     error: false,
                 };
-                case "DELETE_MOVIES_SUCCESS":
+                case "UPLOAD_MOVIE_SUCCESS":
+                return {
+                    movies: state.movies.map(
+                        (movie) => movie._id === action.payload._id && action.payload
+                    ),
+                    isFetching: false,
+                    error: false,
+                };
+                case "UPLOAD_MOVIE_FAILURE":
+                return {
+                    ...state,
+                    isFetching: false,
+                    error: true,
+                };    
+            case "DELETE_MOVIE_START":
+                return {
+                    ...state,
+                    isFetching: true,
+                    error: false,
+                };
+                case "DELETE_MOVIE_SUCCESS":
                 return {
                     movies: state.movies.filter((movie) => movie._id !== action.payload),
                     isFetching: false,
                     error: false,
                 };
-                case "DELETE_MOVIES_FAILURE":
+                case "DELETE_MOVIE_FAILURE":
                 return {
                     ...state,
                     isFetching: false,

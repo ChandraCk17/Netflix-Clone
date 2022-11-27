@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./newMovie.css";
-import storage from "../../firebase";
+import { storage } from "../../firebase";
 import { createMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
@@ -37,7 +37,7 @@ export default function NewMovie() {
         () => {
           uploadTask.snapshot.ref.getDownloadURL().then((url) => {
             setMovie((prev) => {
-              return { ...prev, [item.label]: url};
+              return { ...prev, [item.label]: url };
             });
             setUploaded((prev) => prev + 1);
           });

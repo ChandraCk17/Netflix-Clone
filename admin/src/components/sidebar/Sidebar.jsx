@@ -2,7 +2,7 @@ import { LineStyle,
     Timeline, 
     TrendingUp,
     PermIdentity,
-    AttachMoney,
+    List,
     BarChart,
     MailOutline,
     DynamicFeed,
@@ -52,10 +52,12 @@ export default function Sidebar() {
                         Movies
                     </li>
                     </Link>
+                    <Link to="/lists" className="link">
                     <li className="sidebarListItem">
-                        <AttachMoney className="sidebarIcon" />
-                        Transactions
+                    <List className="sidebarIcon" />
+                        Lists
                     </li>
+                    </Link>
                     <li classNameo="sidebarListItem">
                         <BarChart className="sidebarIcon" />
                         Reports
