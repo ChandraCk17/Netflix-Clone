@@ -37,7 +37,7 @@ export const updateListFailure = () => ({
     type: "UPDATE_LIST_FAILURE",
 });
 
-export const deleteMovieStart = () => ({
+export const deleteListStart = () => ({
     type: "DELETE_MOVIE_START",
 });
 

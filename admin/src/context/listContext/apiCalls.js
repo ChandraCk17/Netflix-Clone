@@ -9,7 +9,7 @@ import {
     getListsFailure, 
     getListsStart, 
     getListsSuccess,
-} from "./ListActions";
+} from "./ListAction";
 
 export const getLists = async ( dispatch) => {
     dispatch(getListsStart());
