@@ -14,13 +14,12 @@ import NewUser from "./pages/newUser/NewUser";
 import Login from "./pages/login/Login";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { useContext } from "react";
+import ListList from "./pages/listlist/ListList";
+import List from "./pages/list/List";
+import NewList from "./pages/newList/NewList";
 import MovieList from "./pages/movieList/MovieList";
 import { Movie } from "@material-ui/icons";
 import NewMovie from "./pages/newMovie/NewMovie";
-import ListList from "./pages/listlist/ListList";
-
-
-
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -41,8 +40,8 @@ function App() {
         <Route path="/movie/:movieId" element={<Movie />} />
         <Route path="/newMovie" element={<NewMovie />} />
         <Route path="/lists" element={<ListList />} />
-        {/* <Route path="/list/:listId" element={<Movie />} />
-        <Route path="/newList" element={<NewList />} /> */}
+        <Route path="/list/:listId" element={<List />} />
+        <Route path="/newList" element={<NewList />} />
       </Routes>
     </div>
   </Router>

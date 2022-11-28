@@ -1,7 +1,8 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-import "./featured.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./featured.scss";
+
 
 export default function Featured({type, setGenre }) {
     const [content, setContent] = useState({});
@@ -12,7 +13,7 @@ export default function Featured({type, setGenre }) {
                 const res = await axios.get(`/movies/random?type=${type}`, {
                     headers: {
                         token:
-                          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODk2NjczNywiZXhwIjoxNjY5Mzk4NzM3fQ.Qo-6yhW83kJGmv9b-vjuC_qZyTuOusXXAeZ1iZl8O3w", //+JSON.parse(localStorage.getItem("user")).accessToken,
+                          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
                     },
                 });
                 setContent(res.data[0]);
@@ -50,12 +51,10 @@ export default function Featured({type, setGenre }) {
                 </select>
                 </div>
         )}
-        <img 
-         src={content.img} alt="" />
+        <img src={content.img} alt="" />
         <div className="info">
-            <img
-                src={content.imgTitle} alt="" />
-            <span className="desc"> {content.desc}</span>
+            <img src={content.imgTitle} alt="" />
+            <span className="desc">{content.desc}</span>
             <div className="buttons">
                 <button className="play">
                     <PlayArrow />

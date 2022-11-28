@@ -1,5 +1,5 @@
 const AuthReducer = (state,action) => {
-    switch (OfflineAudioCompletionEvent.type) {
+    switch (action.type) {
         case "LOGIN START":
             return {
                 user: null,
