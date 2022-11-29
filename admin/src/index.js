@@ -1,28 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
 import { AuthContextProvider } from './context/authContext/AuthContext';
 import { MovieContextProvider } from './context/movieContext/MovieContext';
 import { ListContextProvider } from './context/listContext/ListContext';
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(
-  <AuthContextProvider>
-    <MovieContextProvider>
-    <ListContextProvider>
-        <App />
-    </ListContextProvider>
-    </MovieContextProvider>
-  </AuthContextProvider>
-);
+// const root = ReactDOM.createRoot(document.getElementById("root"))
+// root.render(
+//   <AuthContextProvider>
+//     <MovieContextProvider>
+//     <ListContextProvider>
+//         <App />
+//     </ListContextProvider>
+//     </MovieContextProvider>
+//   </AuthContextProvider>
+// );
 
-/*
+
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-         <App />
+     <MovieContextProvider>
+       <ListContextProvider>
+          <App />
+       </ListContextProvider>
+      </MovieContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-*/
+

@@ -9,7 +9,7 @@ import {
     getMoviesFailure, 
     getMoviesStart, 
     getMoviesSuccess,
-} from "./MovieAction";
+} from "./MovieActions";
 
 export const getMovies = async ( dispatch) => {
     dispatch(getMoviesStart());

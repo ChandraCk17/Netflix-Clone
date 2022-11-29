@@ -27,11 +27,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} />
-      </Routes>
     <Topbar />
     <div className="container">
       <Sidebar />
-      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/user/:userId" element={<User />} />
@@ -42,8 +40,8 @@ function App() {
         <Route path="/lists" element={<ListList />} />
         <Route path="/list/:listId" element={<List />} />
         <Route path="/newList" element={<NewList />} />
-      </Routes>
     </div>
+    </Routes>
   </Router>
   );
 }
