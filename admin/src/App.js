@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Routes, 
   Route, 
-  Navigate,
+  Link,
  } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
@@ -26,7 +26,49 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} />
+        {/* <Route path="/login">{user ? <Link to="/" /> : <Login />}</Route>
+        {user && (
+          <>
+          <Topbar/>
+          <div className="container">
+            <Sidebar/>
+            <Route exact path="/">
+              <Home/>
+              </Route>
+              <Route path="/users">
+                <UserList/>
+                </Route>
+                <Route path="/user/:userId">
+                  <User />
+                  </Route>
+                  <Route path="/newUser">
+                    <NewUser />
+                    </Route>
+                    <Route path="/movies">
+                    <MovieList />
+                    </Route>
+                    <Route path="/movie/:movieId">
+                    <Movie />
+                    </Route>
+                    <Route path="/newMovie">
+                    <NewMovie />
+                    </Route>
+                    <Route path="/lists">
+                    <ListList />
+                    </Route>
+                    <Route path="/list/:listId">
+                    <List />
+                    </Route>
+                    <Route path="/newList">
+                    <NewList />
+                    </Route>
+                  </div>
+                  </>
+        )} */}
+
+    <Route path="/login" element={ user ? <Login /> : <Link to="/" />} />
+    {user &&(
+      <>
     <Topbar />
     <div className="container">
       <Sidebar />
@@ -41,6 +83,8 @@ function App() {
         <Route path="/list/:listId" element={<List />} />
         <Route path="/newList" element={<NewList />} />
     </div>
+    </>
+    )}
     </Routes>
   </Router>
   );
