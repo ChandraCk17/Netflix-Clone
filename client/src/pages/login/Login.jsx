@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 import "./login.scss";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     login({ email, password }, dispatch);
+    navigate("/movies")
   };
   return (
     <div className="login">
