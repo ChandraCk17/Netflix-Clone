@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Routes, 
   Route, 
-  Link,
+  Navigate,
  } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
@@ -23,56 +23,17 @@ import NewMovie from "./pages/newMovie/NewMovie";
 
 function App() {
   const { user } = useContext(AuthContext);
+  console.log("mohit", user);
   return (
     <Router>
       <Routes>
-        {/* <Route path="/login">{user ? <Link to="/" /> : <Login />}</Route>
-        {user && (
-          <>
-          <Topbar/>
-          <div className="container">
-            <Sidebar/>
-            <Route exact path="/">
-              <Home/>
-              </Route>
-              <Route path="/users">
-                <UserList/>
-                </Route>
-                <Route path="/user/:userId">
-                  <User />
-                  </Route>
-                  <Route path="/newUser">
-                    <NewUser />
-                    </Route>
-                    <Route path="/movies">
-                    <MovieList />
-                    </Route>
-                    <Route path="/movie/:movieId">
-                    <Movie />
-                    </Route>
-                    <Route path="/newMovie">
-                    <NewMovie />
-                    </Route>
-                    <Route path="/lists">
-                    <ListList />
-                    </Route>
-                    <Route path="/list/:listId">
-                    <List />
-                    </Route>
-                    <Route path="/newList">
-                    <NewList />
-                    </Route>
-                  </div>
-                  </>
-        )} */}
-
-    <Route path="/login" element={ user ? <Login /> : <Link to="/" />} />
+    <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} />
     {user &&(
       <>
     <Topbar />
     <div className="container">
       <Sidebar />
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/user/:userId" element={<User />} />
         <Route path="/newUser" element={<NewUser />} />
@@ -89,5 +50,7 @@ function App() {
   </Router>
   );
 }
+
+
 
 export default App;
