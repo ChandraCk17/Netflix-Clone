@@ -6,7 +6,8 @@ import {
   BrowserRouter as Router,
   Routes, 
   Route, 
-  // useNavigate,
+  useNavigate,
+  Navigate,
  } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
@@ -22,62 +23,61 @@ import { Movie } from "@material-ui/icons";
 import NewMovie from "./pages/newMovie/NewMovie";
 
 function App() {
-  const { user } = useContext(AuthContext);
+  // // const { user } = useContext(AuthContext);
   // const navigate = useNavigate();
+  // return (
+  const { user } = useContext(AuthContext);
+  console.log("mohit", user);
   return (
     <Router>
-       {/* <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} /> */}
-      <Topbar />
-      <div className="container">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/user/:userId" element={<User />} />
-          <Route path="/newUser" element={<NewUser />} />
-          <Route path="/movies" element={<MovieList />} />
-          <Route path="/movie/:movieId" element={<Movie />} />
-          <Route path="/newMovie" element={<NewMovie />} />
-          <Route path="/lists" element={<ListList />} />
-          <Route path="/list/:listId" element={<List />} />
-          <Route path="/newList" element={<NewList />} />
-        </Routes>
-      </div>
-    </Router>
+      <Routes>
+    <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} />
+    {user &&(
+      <>
+    <Topbar />
+    <div className="container">
+      <Sidebar />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/users" element={<UserList />} />
+        <Route path="/user/:userId" element={<User />} />
+        <Route path="/newUser" element={<NewUser />} />
+        <Route path="/movies" element={<MovieList />} />
+        <Route path="/movie/:movieId" element={<Movie />} />
+        <Route path="/newMovie" element={<NewMovie />} />
+        <Route path="/lists" element={<ListList />} />
+        <Route path="/list/:listId" element={<List />} />
+        <Route path="/newList" element={<NewList />} />
+    </div>
+    </>
+    )}
+    </Routes>
+  </Router>
   );
-
-
-//Main
-
-  // const { user } = useContext(AuthContext);
-  // console.log("mohit", user);
-  // return (
-  //   <Router>
-  //     <Routes>
-  //   <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} />
-  //   {user &&(
-  //     <>
-  //   <Topbar />
-  //   <div className="container">
-  //     <Sidebar />
-  //       <Route exact path="/" element={<Home />} />
-  //       <Route path="/users" element={<UserList />} />
-  //       <Route path="/user/:userId" element={<User />} />
-  //       <Route path="/newUser" element={<NewUser />} />
-  //       <Route path="/movies" element={<MovieList />} />
-  //       <Route path="/movie/:movieId" element={<Movie />} />
-  //       <Route path="/newMovie" element={<NewMovie />} />
-  //       <Route path="/lists" element={<ListList />} />
-  //       <Route path="/list/:listId" element={<List />} />
-  //       <Route path="/newList" element={<NewList />} />
-  //   </div>
-  //   </>
-  //   )}
-  //   </Routes>
-  // </Router>
-  // );
 }
 
 
 
 export default App;
+
+
+
+  //   <Router>
+  //      {/* <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} /> */}
+  //     <Topbar />
+  //     <div className="container">
+  //       <Sidebar />
+  //       <Routes>
+  //         <Route path="/" element={<Home />} />
+  //         <Route path="/users" element={<UserList />} />
+  //         <Route path="/user/:userId" element={<User />} />
+  //         <Route path="/newUser" element={<NewUser />} />
+  //         <Route path="/movies" element={<MovieList />} />
+  //         <Route path="/movie/:movieId" element={<Movie />} />
+  //         <Route path="/newMovie" element={<NewMovie />} />
+  //         <Route path="/lists" element={<ListList />} />
+  //         <Route path="/list/:listId" element={<List />} />
+  //         <Route path="/newList" element={<NewList />} />
+  //       </Routes>
+  //     </div>
+  //   </Router>
+  // );
