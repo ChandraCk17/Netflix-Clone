@@ -23,9 +23,6 @@ import { Movie } from "@material-ui/icons";
 import NewMovie from "./pages/newMovie/NewMovie";
 
 function App() {
-  // // const { user } = useContext(AuthContext);
-  // const navigate = useNavigate();
-  // return (
   const { user } = useContext(AuthContext);
   console.log("mohit", user);
   return (
@@ -61,6 +58,10 @@ export default App;
 
 
 
+
+  // // const { user } = useContext(AuthContext);
+  // const navigate = useNavigate();
+  // return (
   //   <Router>
   //      {/* <Route path="/login" element={ user ? <Login /> : <Navigate to="/" />} /> */}
   //     <Topbar />
