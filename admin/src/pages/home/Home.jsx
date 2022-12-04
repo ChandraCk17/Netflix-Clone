@@ -5,7 +5,7 @@ import { userData } from "../../dummyData";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
 import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 export default function Home() {
   const MONTHS = useMemo(
@@ -31,10 +31,10 @@ export default function Home() {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("/users/stats", {
+        const res = await Axios.get("/users/stats", {
           headers: {
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2OTY2OTY1OCwiZXhwIjoxNjcwMTAxNjU4fQ.os7zLxfT97hTCWU_qWq6W7YwKmpVAUYz3SF2CeOfj24",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjdjNWE4MTg0MTBjZTczYzU5MmQxZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDExMjY0MiwiZXhwIjoxNjcwNTQ0NjQyfQ.OF5xsZmXrvWRGBnZdoeEG6IMMyj4jHDe366Wm99KDW8",
           },
         });
         const statsList = res.data.sort(function (a, b) {
