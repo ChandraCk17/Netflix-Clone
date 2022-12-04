@@ -5,7 +5,7 @@ import { userData } from "../../dummyData";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
 import { useEffect, useMemo, useState } from "react";
-import  { Axios } from "axios";
+import { Axios } from "axios";
 
 export default function Home() {
   const MONTHS = useMemo(
